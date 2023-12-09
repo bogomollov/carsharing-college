@@ -33,10 +33,10 @@ defineProps({
                         <div class="flex items-center justify-between p-5 mx-auto">
                             <nav class="flex font-normal text-lg items-center justify-center mx-auto">
                                 <a class="items-center text-gray-900 md:mb-0 header-img">
-                                    <img src="./images/logo.png" width="70" height="60"/>
+                                    <img src="./images/logo.png" width="50" height="50"/>
                                 </a>
-                                <a href="#_" class="hover:text-gray-900 header-tarif">Тарифы</a>
-                                <a href="#_" class="pl-5 hover:text-gray-900">Контакты</a>
+                                <a @click="handleClick" class="hover:text-gray-900 header-tarif">Тарифы</a>
+                                <a @click="handleClick2" class="pl-5 hover:text-gray-900">Контакты</a>
                                 <div class="items-center h-full account">
                                     <Link :href="route('login')" class="pr-5 hover:text-gray-900">Авторизация</Link>
                                     <Link v-if="canRegister" :href="route('register')" class="px-4 py-2 text-white transition-all duration-150 rounded shadow outline-none hover:shadow-md focus:outline-none ease header-button">
@@ -62,9 +62,9 @@ defineProps({
                             </div>
                         </div>
                     </div>
-                    <div class="mt-16 mb-16 main">
+                    <div class="mt-16 mb-44 main">
                         <div class="mx-auto main-content">
-                            <a class="font-medium text-2xl">Тарифы</a>
+                            <a ref="targetRef" class="font-medium text-2xl">Тарифы</a>
                             <div class="flex slider">
                                 <div class="flex flex-wrap content-tarif">
                                     <div class="border-gray-100 shadow-sm">
@@ -89,7 +89,7 @@ defineProps({
                             </div>
                         </div>
                     </div>
-                    <footer class="border-gray-100 shadow-sm footer">
+                    <footer ref="targetRef2" class="border-gray-100 shadow-sm footer">
                         <div class="flex items-center justify-between p-5 mx-auto">
                             <nav class="flex font-normal text-lg items-center justify-center mx-auto">
                                 <div class="flex items-center text-gray-900 md:mb-0 footer-img">
@@ -108,6 +108,23 @@ defineProps({
             </template>
         </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      ref: null
+    };
+  },
+  methods: {
+    handleClick() {
+        this.$refs.targetRef.scrollIntoView({behavior:'smooth'});
+    },
+    handleClick2() {
+        this.$refs.targetRef2.scrollIntoView({behavior:'smooth'});
+    }
+  }
+};
+</script>
 <style>
 .header, .footer {
     background-color: #F7FAFC;
