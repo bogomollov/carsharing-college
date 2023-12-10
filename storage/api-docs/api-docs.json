@@ -4,9 +4,20 @@
     "title": "API",
     "version": "1.0.11"
   },
+  "servers": [
+    {
+      "url": "http://localhost",
+      "description": "Local"
+    }
+  ],
   "paths": {
-    "/api/cars": {
+    "/cars": {
       "get": {
+        "servers": [
+          {
+            "url": "http://localhost/api/auth"
+          }
+        ],
         "tags": [
           "Машины"
         ],
@@ -26,8 +37,13 @@
         }
       }
     },
-    "/api/cars/{id}": {
+    "/cars/{id}": {
       "get": {
+        "servers": [
+          {
+            "url": "http://localhost/api/auth"
+          }
+        ],
         "tags": [
           "Машины"
         ],
@@ -59,8 +75,13 @@
         }
       }
     },
-    "/api/cars/create": {
+    "/cars/create": {
       "post": {
+        "servers": [
+          {
+            "url": "http://localhost/api/auth"
+          }
+        ],
         "tags": [
           "Машины"
         ],
@@ -89,8 +110,13 @@
         }
       }
     },
-    "/api/cars/{id}/update": {
+    "/cars/{id}/update": {
       "put": {
+        "servers": [
+          {
+            "url": "http://localhost/api/auth"
+          }
+        ],
         "tags": [
           "Машины"
         ],
@@ -131,8 +157,13 @@
         }
       }
     },
-    "/api/cars/{id}/delete": {
+    "/cars/{id}/delete": {
       "delete": {
+        "servers": [
+          {
+            "url": "http://localhost/api/auth"
+          }
+        ],
         "tags": [
           "Машины"
         ],
@@ -164,8 +195,13 @@
         }
       }
     },
-    "/api/arend": {
+    "/arend": {
       "get": {
+        "servers": [
+          {
+            "url": "http://localhost/api/auth"
+          }
+        ],
         "tags": [
           "Арендаторы"
         ],
@@ -185,8 +221,13 @@
         }
       }
     },
-    "/api/arend/{id}": {
+    "/arend/{id}": {
       "get": {
+        "servers": [
+          {
+            "url": "http://localhost/api/auth"
+          }
+        ],
         "tags": [
           "Арендаторы"
         ],
@@ -218,8 +259,13 @@
         }
       }
     },
-    "/api/arend/create": {
+    "/arend/create": {
       "post": {
+        "servers": [
+          {
+            "url": "http://localhost/api/auth"
+          }
+        ],
         "tags": [
           "Арендаторы"
         ],
@@ -248,8 +294,13 @@
         }
       }
     },
-    "/api/arend/{id}/update": {
+    "/arend/{id}/update": {
       "put": {
+        "servers": [
+          {
+            "url": "http://localhost/api/auth"
+          }
+        ],
         "tags": [
           "Арендаторы"
         ],
@@ -290,8 +341,13 @@
         }
       }
     },
-    "/api/arend/{id}/delete": {
+    "/arend/{id}/delete": {
       "delete": {
+        "servers": [
+          {
+            "url": "http://localhost/api/auth"
+          }
+        ],
         "tags": [
           "Арендаторы"
         ],
@@ -324,6 +380,11 @@
       }
     }
   },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
   "components": {
     "schemas": {
       "getCars": {
@@ -604,6 +665,12 @@
             "example": false
           }
         }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
       }
     }
   }

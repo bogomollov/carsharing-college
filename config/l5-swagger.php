@@ -153,11 +153,12 @@ return [
         */
         'securityDefinitions' => [
             'securitySchemes' => [
-                'bearerAuth' => [ // Unique name of security
-                    'type' => 'apiKey', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
+                'BearerToken' => [ // Unique name of security
+                    'type' => 'http', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
                     'description' => 'Введите bearer token',
-                    'name' => 'bearerAuth', // The name of the header or query parameter to be used.
+                    'name' => 'Authorization', // The name of the header or query parameter to be used.
                     'in' => 'header', // The location of the API key. Valid values are "query" or "header".
+                    'bearerFormat' => 'JWT'
                 ],
                 /*
                 'oauth2_security_example' => [ // Unique name of security

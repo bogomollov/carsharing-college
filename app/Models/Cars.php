@@ -17,4 +17,11 @@ class Cars extends Model
         'model',
         'year'
     ];
+    public function getJWTIdentifier() {
+        return $this->getKey();
+    }
+    
+    public function getJWTCustomClaims() {
+        return [];
+    }
 }

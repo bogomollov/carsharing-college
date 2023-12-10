@@ -16,10 +16,7 @@ class ArendatorsController extends Controller
      */
     public function index()
     {
-        $cache = Cache::rememberForever('arendators:all', function () {
-            return DB::table('arendators')->get();
-        });
-        return Cache::get('arendators:all');
+        return Arendators::all();
     }
 
     /**

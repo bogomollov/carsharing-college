@@ -43,6 +43,7 @@
     39 => 'App\\Providers\\AuthServiceProvider',
     40 => 'App\\Providers\\EventServiceProvider',
     41 => 'App\\Providers\\RouteServiceProvider',
+    42 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
   ),
   'eager' => 
   array (
@@ -73,6 +74,7 @@
     24 => 'App\\Providers\\AuthServiceProvider',
     25 => 'App\\Providers\\EventServiceProvider',
     26 => 'App\\Providers\\RouteServiceProvider',
+    27 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
   ),
   'deferred' => 
   array (

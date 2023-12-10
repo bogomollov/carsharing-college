@@ -11,7 +11,6 @@ use App\Http\Requests\Cars\UpdateRequest;
 
 class CarsController extends Controller
 {
-
     public function index()
     {
         
@@ -43,16 +42,9 @@ class CarsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show(Cars $cars)
     {
-        if (!Cache::has("cars:$id")) {
-            $tb = DB::table('cars')->find($id);
-            Cache::put("cars:$id",$tb);
-            return $tb;
-        }
-        else {
-            return Cache::get("cars:$id");
-        }
+        return Cars::find($cars);
     }
 
     /**
