@@ -4,11 +4,6 @@
     "title": "API",
     "version": "1.0.11"
   },
-  "servers": [
-    {
-      "url": "http://localhost:80 - Local"
-    }
-  ],
   "paths": {
     "/api/cars": {
       "get": {

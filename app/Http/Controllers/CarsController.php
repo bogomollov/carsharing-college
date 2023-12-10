@@ -14,10 +14,8 @@ class CarsController extends Controller
 
     public function index()
     {
-        $cache = Cache::rememberForever('cars:all', function () {
-            return DB::table('cars')->get();
-        });
-        return Cache::get('cars:all');
+        
+        return Cars::all();
     }
     /**
      * Show the form for creating a new resource.

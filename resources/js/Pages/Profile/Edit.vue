@@ -16,14 +16,12 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Profile" />
-
-    <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Profile</h2>
-        </template>
-
-        <div class="py-12">
+    <Head title="Личный кабинет" />
+    <div class="bg-gray-100 text-gray-700">
+        <div class="flex items-center justify-center p-5 mx-auto bg-white border-gray-100 shadow-sm header header">
+            <AuthenticatedLayout></AuthenticatedLayout>
+        </div>
+            <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                     <UpdateProfileInformationForm
@@ -42,5 +40,5 @@ defineProps({
                 </div>
             </div>
         </div>
-    </AuthenticatedLayout>
+    </div>    
 </template>
