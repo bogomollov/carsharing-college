@@ -33,7 +33,7 @@ class ArendatorsController extends Controller
     public function store(StoreRequest $request)
     {
         $ar = $request->validated();
-        $a = Cars::create($ar);
+        $a = Arendators::create($ar);
         if ($a) {
             return response()->json([
                 'status' => 200,

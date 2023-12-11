@@ -52,7 +52,7 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
             "description": "ID",
             "required": true,
             "schema": {
@@ -134,7 +134,7 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
             "description": "ID",
             "required": true,
             "schema": {
@@ -172,7 +172,7 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
             "description": "ID",
             "required": true,
             "schema": {
@@ -236,7 +236,7 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
             "description": "ID",
             "required": true,
             "schema": {
@@ -318,7 +318,7 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
             "description": "ID",
             "required": true,
             "schema": {
@@ -356,7 +356,7 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
             "description": "ID",
             "required": true,
             "schema": {
@@ -404,7 +404,7 @@
                   "type": "string",
                   "example": "Audi AG"
                 },
-                "marka": {
+                "mark": {
                   "type": "string",
                   "example": "Audi"
                 },
@@ -439,7 +439,7 @@
             "type": "string",
             "example": "Mazda Motor Corporation"
           },
-          "marka": {
+          "mark": {
             "type": "string",
             "example": "Mazda"
           },
@@ -460,13 +460,13 @@
             "type": "string",
             "example": "Porsche AG"
           },
-          "marka": {
+          "mark": {
             "type": "string",
             "example": "Porsche"
           },
           "model": {
             "type": "string",
-            "example": 911
+            "example": "911"
           },
           "year": {
             "type": "integer",
@@ -498,7 +498,7 @@
             "type": "string",
             "example": "Porsche AG"
           },
-          "marka": {
+          "mark": {
             "type": "string",
             "example": "Porsche"
           },

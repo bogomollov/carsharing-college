@@ -12,16 +12,10 @@ class Cars extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'prod',
-        'marka',
+        'mark',
         'model',
         'year'
     ];
-    public function getJWTIdentifier() {
-        return $this->getKey();
-    }
-    
-    public function getJWTCustomClaims() {
-        return [];
-    }
 }

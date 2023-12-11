@@ -23,9 +23,9 @@ class StoreRequest extends FormRequest
     {
         return [
             'prod' => 'required|string',
-            'marka' => 'required|string',
+            'mark' => 'required|string',
             'model' => 'required|string',
-            'year' => 'required|string',
+            'year' => 'required|integer'
         ];
     }
 }

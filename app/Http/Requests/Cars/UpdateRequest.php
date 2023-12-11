@@ -24,9 +24,9 @@ class UpdateRequest extends FormRequest
         return [
             'id' => 'integer',
             'prod' => 'string',
-            'marka' => 'string',
+            'mark' => 'string',
             'model' => 'string',
-            'year' => 'string',
+            'year' => 'integer',
         ];
     }
 }
