@@ -101,7 +101,7 @@ defineProps({
         </template>
             <template v-else>
                 <div class="h-screen justify-between min-h-screen bg-gray-100 min-w-screen text-gray-700">
-                    <header class="w-full border-gray-100 shadow-sm header">
+                    <header class="w-full bg-white border-gray-100 shadow-sm header">
                         <div class="flex items-center justify-between p-5 mx-auto">
                             <nav class="flex font-normal text-lg items-center justify-center mx-auto">
                                 <a class="items-center text-gray-900 md:mb-0 header-img">
@@ -111,7 +111,7 @@ defineProps({
                                 <a @click="handleClick2" class="pl-5 hover:text-gray-900">Контакты</a>
                                 <div class="items-center h-full account">
                                     <Link :href="route('login')" class="pr-5 hover:text-gray-900">Авторизация</Link>
-                                    <Link v-if="canRegister" :href="route('register')" class="px-4 py-2 text-white transition-all duration-150 rounded shadow outline-none hover:shadow-md focus:outline-none ease header-button">
+                                    <Link :href="route('register')" class="px-4 py-2 text-white transition-all duration-150 rounded shadow outline-none hover:shadow-md focus:outline-none ease header-button">
                                         Регистрация</Link>
                             </div>
                             </nav>
@@ -204,7 +204,7 @@ export default {
     background-color: #4FC3F7;
 }
 .account {
-    padding-left: 1156px;
+    padding-left: 999px;
 }
 .main-content {
     width: 1539px;
