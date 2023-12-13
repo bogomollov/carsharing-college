@@ -14,7 +14,7 @@ class CarsController extends Controller
     public function index()
     {
         $cars = Cars::all();
-        return CarsResource::collection($cars);
+        return response()->json($cars);
     }
     /**
      * Show the form for creating a new resource.

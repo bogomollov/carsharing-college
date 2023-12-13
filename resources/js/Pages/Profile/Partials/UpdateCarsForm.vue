@@ -5,20 +5,14 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
 
-defineProps({
-    mustVerifyEmail: {
-        type: Boolean,
-    },
-    status: {
-        type: String,
-    },
-});
-
 const user = usePage().props.auth.user;
 
+const updateCars = () => {
+    form.put(route('profile.carsupdate'));
+};
 const form = useForm({
-    name: user.name,
-    email: user.email,
+    id: user.id,
+    car: user.car
 });
 </script>
 
@@ -27,14 +21,15 @@ const form = useForm({
         <header>
             <h2 class="text-lg font-medium text-gray-900">Информация о каршеринге</h2>
             <p class="mt-1 text-sm text-gray-600">
-                Обновите тариф или выберите машину для проката
+                Выберите машину для проката
             </p>
         </header>
-        <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
-            <div id="v-model-select-dynamic" class="demo">
-                <select v-model="selected">
-                    <option v-for="option in options" v-bind:value="option.value">
-                        {{ option.text }}
+        <form @submit.prevent="updateCars" class="mt-6 space-y-6">
+            <InputLabel value="Машина" style="margin-bottom: -19px;"/>
+            <div id="v-model-select-dynamic">
+                <select for="car" v-model="form.car" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block">
+                    <option id="car" v-for="car in cars" :key="car.id" :value="car.id">
+                        {{ car.mark }} {{ car.model }}
                     </option>
                 </select>
             </div>
@@ -54,3 +49,27 @@ const form = useForm({
         </form>
     </section>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            cars: [],
+        }
+    },
+    mounted() {
+        this.fetchCars();
+    },
+    methods: {
+        fetchCars() {
+            axios.get('/api/auth/cars')
+                .then(response => {
+                    this.cars = response.data;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    }
+}
+</script>

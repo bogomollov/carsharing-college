@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\Cars\UpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use App\Models\User;
 use Inertia\Response;
 
 class ProfileController extends Controller
@@ -39,7 +41,10 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit');
     }
-
+    public function carsupdate(Request $request) {
+        User::where('id', $request['id'])->update(['car' => $request['car']]);
+        return Redirect::route('profile.carsupdate');
+    }
     /**
      * Delete the user's account.
      */
@@ -58,6 +63,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/register');
     }
 }
