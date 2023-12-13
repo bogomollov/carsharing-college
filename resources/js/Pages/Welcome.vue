@@ -7,15 +7,7 @@ defineProps({
     },
     canRegister: {
         type: Boolean,
-    },
-    laravelVersion: {
-        type: String,
-        required: true,
-    },
-    phpVersion: {
-        type: String,
-        required: true,
-    },
+    }
 });
 </script>
 
@@ -99,7 +91,7 @@ defineProps({
                 </footer>         
             </div>            
         </template>
-            <template v-else>
+        <template v-else>
                 <div class="h-screen justify-between min-h-screen bg-gray-100 min-w-screen text-gray-700">
                     <header class="w-full bg-white border-gray-100 shadow-sm header">
                         <div class="flex items-center justify-between p-5 mx-auto">
@@ -109,7 +101,7 @@ defineProps({
                                 </a>
                                 <a @click="handleClick" class="hover:text-gray-900 header-tarif">Тарифы</a>
                                 <a @click="handleClick2" class="pl-5 hover:text-gray-900">Контакты</a>
-                                <div class="items-center h-full account">
+                                <div class="items-center h-full account2">
                                     <Link :href="route('login')" class="pr-5 hover:text-gray-900">Авторизация</Link>
                                     <Link :href="route('register')" class="px-4 py-2 text-white transition-all duration-150 rounded shadow outline-none hover:shadow-md focus:outline-none ease header-button">
                                         Регистрация</Link>
@@ -204,6 +196,9 @@ export default {
     background-color: #4FC3F7;
 }
 .account {
+    padding-left: 1155px;
+}
+.account2 {
     padding-left: 999px;
 }
 .main-content {
