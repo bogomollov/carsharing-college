@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('car', false)->nullable();
-            $table->foreign('car')->references('id')->on('cars');
+            $table->foreign('car')->references('id')->on('cars')->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

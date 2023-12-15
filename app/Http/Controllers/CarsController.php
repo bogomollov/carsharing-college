@@ -14,7 +14,16 @@ class CarsController extends Controller
     public function index()
     {
         $cars = Cars::all();
-        return response()->json($cars);
+        $d = response()->json($cars);
+        if ($cars) {
+            return $d;
+        }
+        else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Not Found'
+            ],404);;
+        }
     }
     /**
      * Show the form for creating a new resource.
@@ -30,15 +39,28 @@ class CarsController extends Controller
     public function store(StoreRequest $request)
     {
         $cars = Cars::create($request->validated());
-        return CarsResource::make($cars);
+        return response()->json([
+            'status' => 200,
+            'message' => 'Created'
+        ],200);;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $cars)
+    public function show(int $cars)
     {
-        return new CarsResource(Cars::findOrFail($cars));
+        $d = Cars::find($cars);
+        if ($d) {
+            return $d;
+        }
+        else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Not Found'
+            ],404);;
+        }
+        
     }
 
     /**
@@ -52,10 +74,24 @@ class CarsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequest $request, Cars $cars)
+    public function update(UpdateRequest $request, int $id)
     {
-        $cars->update($request->validated());
-        return new CarsResource($cars);
+        $data = $request->validated();
+        $cars = Cars::find($id);
+        $d = $cars->update($data);
+        if ($cars) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Updated'
+            ],200);;
+        }
+        else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Not Found'
+            ],404);;
+        }
+
     }
 
     /**
@@ -69,6 +105,12 @@ class CarsController extends Controller
                 'status' => 200,
                 'message' => 'Deleted'
             ],200);
+        }
+        else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Not Found'
+            ],404);;
         }
     }
 }

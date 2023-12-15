@@ -33,6 +33,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Не найдено",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response404"
+                }
+              }
+            }
           }
         }
       }
@@ -53,7 +63,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "ID",
+            "description": "Идентификатор существующей машины",
             "required": true,
             "schema": {
               "type": "integer",
@@ -68,6 +78,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/getCarsId"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Не найдено",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response404"
                 }
               }
             }
@@ -87,15 +107,51 @@
         ],
         "summary": "Добавляем новую машину",
         "operationId": "store",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/postCars"
-              }
+        "parameters": [
+          {
+            "name": "prod",
+            "in": "query",
+            "description": "Производитель",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "mark",
+            "in": "query",
+            "description": "Марка",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "description": "Модель",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "Год выпуска",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Успех",
@@ -122,21 +178,60 @@
         ],
         "summary": "Обновляем данные о машине по ID",
         "operationId": "update",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/putCars"
-              }
-            }
-          }
-        },
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID",
+            "description": "Идентификатор существующей машины",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Новый идентификатор",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "prod",
+            "in": "query",
+            "description": "Новый производитель",
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "mark",
+            "in": "query",
+            "description": "Новая марка",
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "description": "Новая модель",
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "Новый год выпуска",
             "schema": {
               "type": "integer",
               "format": "int64"
@@ -150,6 +245,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/putCars200"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Не найдено",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response404"
                 }
               }
             }
@@ -173,7 +278,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "ID",
+            "description": "Идентификатор существующей машины",
             "required": true,
             "schema": {
               "type": "integer",
@@ -191,11 +296,21 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Не найдено",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response404"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/arend": {
+    "/users": {
       "get": {
         "servers": [
           {
@@ -203,9 +318,9 @@
           }
         ],
         "tags": [
-          "Арендаторы"
+          "Пользователи"
         ],
-        "summary": "Получаем список арендаторов",
+        "summary": "Получаем список пользователей",
         "operationId": "all2",
         "responses": {
           "200": {
@@ -217,11 +332,21 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Не найдено",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response404"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/arend/{id}": {
+    "/users/{id}": {
       "get": {
         "servers": [
           {
@@ -229,15 +354,15 @@
           }
         ],
         "tags": [
-          "Арендаторы"
+          "Пользователи"
         ],
-        "summary": "Получаем арендатора по ID",
+        "summary": "Получаем пользователя по ID",
         "operationId": "index2",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID",
+            "description": "Идентификатор существующего пользователя",
             "required": true,
             "schema": {
               "type": "integer",
@@ -255,11 +380,21 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Не найдено",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response404"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/arend/create": {
+    "/users/create": {
       "post": {
         "servers": [
           {
@@ -267,19 +402,44 @@
           }
         ],
         "tags": [
-          "Арендаторы"
+          "Пользователи"
         ],
-        "summary": "Добавляем нового арендатора",
+        "summary": "Добавляем нового пользователя",
         "operationId": "store2",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/postArend"
-              }
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Имя",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Почта",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "Пароль",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Успех",
@@ -294,7 +454,7 @@
         }
       }
     },
-    "/arend/{id}/update": {
+    "/users/{id}/update": {
       "put": {
         "servers": [
           {
@@ -302,28 +462,58 @@
           }
         ],
         "tags": [
-          "Арендаторы"
+          "Пользователи"
         ],
-        "summary": "Обновляем данные об арендаторе по ID",
+        "summary": "Обновляем данные об пользователе по ID",
         "operationId": "update2",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/putArend"
-              }
-            }
-          }
-        },
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID",
+            "description": "Идентификатор существующего пользователя",
             "required": true,
             "schema": {
               "type": "integer",
               "format": "int64"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Новый идентификатор",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Новое имя",
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Новая почта",
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "Новый пароль",
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
             }
           }
         ],
@@ -337,11 +527,21 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Не найдено",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response404"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/arend/{id}/delete": {
+    "/users/{id}/delete": {
       "delete": {
         "servers": [
           {
@@ -349,15 +549,15 @@
           }
         ],
         "tags": [
-          "Арендаторы"
+          "Пользователи"
         ],
-        "summary": "Удаляем арендатора по ID",
+        "summary": "Удаляем пользователя по ID",
         "operationId": "delete2",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID",
+            "description": "Идентификатор существующего пользователя",
             "required": true,
             "schema": {
               "type": "integer",
@@ -372,6 +572,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/deleteCars200"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Не найдено",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response404"
                 }
               }
             }
@@ -415,6 +625,18 @@
                 "year": {
                   "type": "integer",
                   "example": 2005
+                },
+                "created_at": {
+                  "type": "string",
+                  "example": null
+                },
+                "updated_at": {
+                  "type": "string",
+                  "example": null
+                },
+                "deleted_at": {
+                  "type": "string",
+                  "example": null
                 }
               }
             }
@@ -450,6 +672,18 @@
           "year": {
             "type": "integer",
             "example": 2008
+          },
+          "created_at": {
+            "type": "string",
+            "example": null
+          },
+          "updated_at": {
+            "type": "string",
+            "example": null
+          },
+          "deleted_at": {
+            "type": "string",
+            "example": null
           }
         }
       },
@@ -471,6 +705,18 @@
           "year": {
             "type": "integer",
             "example": 2015
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2023-12-15T14:43:33.000Z"
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2023-12-15T14:43:33.000Z"
+          },
+          "id": {
+            "type": "integer",
+            "example": 2
           }
         }
       },
@@ -553,23 +799,31 @@
                 },
                 "name": {
                   "type": "string",
-                  "example": "Mr. Khalil Mayer"
+                  "example": "bogomollov"
                 },
-                "history_operations": {
+                "email": {
+                  "type": "string",
+                  "example": "viper@mail.ru"
+                },
+                "email_verified_at": {
                   "type": "string",
                   "example": null
                 },
-                "history_arends": {
-                  "type": "string",
-                  "example": null
-                },
-                "money": {
+                "car": {
                   "type": "integer",
-                  "example": 500
+                  "example": null
                 },
-                "status": {
-                  "type": "boolean",
-                  "example": true
+                "created_at": {
+                  "type": "string",
+                  "example": "2023-12-15T14:43:33.000Z"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "example": "2023-12-15T14:43:33.000Z"
+                },
+                "deleted_at": {
+                  "type": "string",
+                  "example": null
                 }
               }
             }
@@ -592,23 +846,31 @@
           },
           "name": {
             "type": "string",
-            "example": "Dr. Antwon Wilkinson II"
+            "example": "vanya"
           },
-          "history_operations": {
+          "email": {
+            "type": "string",
+            "example": "van@mail.ru"
+          },
+          "email_verified_at": {
             "type": "string",
             "example": null
           },
-          "history_arends": {
-            "type": "string",
-            "example": null
-          },
-          "money": {
+          "car": {
             "type": "integer",
-            "example": 8500
+            "example": null
           },
-          "status": {
-            "type": "boolean",
-            "example": false
+          "created_at": {
+            "type": "string",
+            "example": "2023-12-15T14:48:33.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2023-12-15T14:48:33.000Z"
+          },
+          "deleted_at": {
+            "type": "string",
+            "example": null
           }
         }
       },
@@ -637,32 +899,16 @@
           }
         }
       },
-      "putArend": {
+      "response404": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "example": 5
-          },
-          "name": {
-            "type": "string",
-            "example": "Dr. Kingdom"
-          },
-          "history_operations": {
-            "type": "string",
-            "example": null
-          },
-          "history_arends": {
-            "type": "string",
-            "example": "Audi A6"
-          },
-          "money": {
-            "type": "integer",
-            "example": 3100
-          },
           "status": {
-            "type": "boolean",
-            "example": false
+            "type": "integer",
+            "example": 404
+          },
+          "message": {
+            "type": "string",
+            "example": "Not Found"
           }
         }
       }
