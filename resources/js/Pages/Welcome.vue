@@ -15,7 +15,7 @@ defineProps({
     <Head title="Главная" />
         <template v-if="canLogin">
             <div class="h-screen justify-between min-h-screen bg-gray-100 min-w-screen text-gray-700">
-                    <header class="w-full border-gray-100 bg-white shadow-sm header">
+                    <header class="w-full bg-white border-gray-100 shadow-sm header">
                         <div class="flex items-center justify-between p-5 mx-auto">
                             <nav class="flex font-normal text-lg items-center justify-center mx-auto">
                                 <a class="items-center text-gray-900 md:mb-0 header-img">
@@ -23,9 +23,10 @@ defineProps({
                                 </a>
                                 <a @click="handleClick" class="hover:text-gray-900 header-tarif">Тарифы</a>
                                 <a @click="handleClick2" class="pl-5 hover:text-gray-900">Контакты</a>
-                                <div class="items-center h-full account">
-                                    <AuthenticatedLayout>
-                                    </AuthenticatedLayout>
+                                <div class="items-center h-full account2">
+                                    <Link :href="route('login')" class="pr-5 hover:text-gray-900">Авторизация</Link>
+                                    <Link :href="route('register')" class="px-4 py-2 text-white transition-all duration-150 rounded shadow outline-none hover:shadow-md focus:outline-none ease header-button">
+                                        Регистрация</Link>
                             </div>
                             </nav>
                         </div>
@@ -74,7 +75,7 @@ defineProps({
                             </div>
                         </div>
                     </div>
-                    <footer ref="targetRef2" class="border-gray-100 shadow-sm footer">
+                    <footer ref="targetRef2" class="bg-white border-gray-100 shadow-sm footer">
                         <div class="flex items-center justify-between p-5 mx-auto">
                             <nav class="flex font-normal text-lg items-center justify-center mx-auto">
                                 <div class="flex items-center text-gray-900 md:mb-0 footer-img">
@@ -83,16 +84,16 @@ defineProps({
                                     <a href="https://web.whatsapp.com" target="_blank" class="pl-5"><img src="./images/whatsapp.png" width="31" height="31"/></a>
                                     <a href="https://youtube.com" target="_blank" class="pl-5"><img src="./images/youtube.png" width="40" height="26"/></a>
                                 </div>
-                            <a href="mailto:info@autoterminal.ru" target="_blank" class="font-normal text-lg hover:text-gray-900 footer-email">info@autoterminal.ru</a>
-                            <a href="https://yandex.ru/maps/-/CDqBR2km" target="_blank" class="font-normal text-lg pl-5 hover:text-gray-900">Москва, ул. Житная 52/1</a>
-                            <a href="tel:+78003500270" class="font-normal text-lg pl-5 hover:text-gray-900">+7 (800) 350-02-70</a>
-                        </nav>
-                    </div>
-                </footer>         
-            </div>            
+                                <a href="mailto:info@autoterminal.ru" target="_blank" class="font-normal text-lg hover:text-gray-900 footer-email">info@autoterminal.ru</a>
+                                <a href="https://yandex.ru/maps/-/CDqBR2km" target="_blank" class="font-normal text-lg pl-5 hover:text-gray-900">Москва, ул. Житная 52/1</a>
+                                <a href="tel:+78003500270" class="font-normal text-lg pl-5 hover:text-gray-900">+7 (800) 350-02-70</a>
+                            </nav>
+                        </div>
+                    </footer>         
+                </div>
         </template>
         <template v-else>
-                <div class="h-screen justify-between min-h-screen bg-gray-100 min-w-screen text-gray-700">
+            <div class="h-screen justify-between min-h-screen bg-gray-100 min-w-screen text-gray-700">
                     <header class="w-full bg-white border-gray-100 shadow-sm header">
                         <div class="flex items-center justify-between p-5 mx-auto">
                             <nav class="flex font-normal text-lg items-center justify-center mx-auto">
